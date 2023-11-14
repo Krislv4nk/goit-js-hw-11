@@ -53,7 +53,7 @@ async function handleFormSubmit(event) {
       });
    
   } catch (error) {
-    console.error('Error:', error);
+    Notiflix.Notify.failure("Sorry, there are no images matching your search query. Please try again.");
   }
 }
 
@@ -65,15 +65,16 @@ async function handleLoadMoreClick() {
       const card = createImageCard(image);
       gallery.innerHTML += card;
     });
+    
     SimpleLightbox.refresh();
   } catch (error) {
-    console.error('Error:', error);
+    Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.");
   }
 }
 
 
-// form.addEventListener('submit', handleFormSubmit);
-// loadMoreButton.addEventListener('click', handleLoadMoreClick);
+form.addEventListener('submit', handleFormSubmit);
+loadMoreButton.addEventListener('click', handleLoadMoreClick);
 
 
 

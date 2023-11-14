@@ -1,2 +1,54 @@
 @import './common';
 @import './example';
+
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+  }
+  
+  .photo-card {
+    overflow: hidden;
+  }
+  
+  
+.search-form {
+    display: flex;
+    margin-bottom: 20px;
+    width: 50%;
+    margin: 0 auto;
+  }
+  
+  
+  .search-form input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #00ff00; 
+    border-radius: 5px;
+  }
+  
+  
+  .search-form button {
+    padding: 10px;
+    background-color: #00ff00; 
+    color: #ffffff;
+    border: 1px solid #00ff00; 
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  
+  .load-more {
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #00ff00;
+    color: #ffffff; 
+    border: 1px solid #00ff00; 
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+ 
+  
