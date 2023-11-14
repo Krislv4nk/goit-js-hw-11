@@ -44,7 +44,14 @@ async function handleFormSubmit(event) {
       gallery.innerHTML += card;
     });
     loadMoreButton.style.display = 'block';
-    new SimpleLightbox('.photo-card a', { /* опції */ });
+    new SimpleLightbox('.photo-card a', {
+        overlay: true,
+        captions: true,
+        captionPosition: 'bottom',
+        animationSpeed: 250,
+        closeText: '×'
+      });
+   
   } catch (error) {
     console.error('Error:', error);
   }
