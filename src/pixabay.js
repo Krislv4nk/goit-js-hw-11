@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 import Notiflix from 'notiflix';
 
 export async function fetchImages(searchQuery, page = 1) {
