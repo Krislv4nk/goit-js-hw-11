@@ -54,7 +54,7 @@ async function handleFormSubmit(event) {
       });
    
   } catch (error) {
-    Notiflix.Notify.failure(`Sorry, there are no images matching your search query. Please try again.`);
+    Notiflix.Notify.failure(`We're sorry, but you've reached the end of search results`);
   }
 }
 
@@ -66,10 +66,14 @@ async function handleLoadMoreClick() {
       const card = createImageCard(image);
       gallery.innerHTML += card;
     });
-    
+    const { height: cardHeight } = gallery.firstElementChild.getBoundingClientRect();
+    window.scrollBy({
+      top: cardHeight * 2,
+      behavior: "smooth",
+    });
     SimpleLightbox.refresh();
   } catch (error) {
-    Notiflix.Notify.failure(`We're sorry, but you've reached the end of search results`);
+    Notiflix.Notify.failure(`Sorry, there are no images matching your search query. Please try again.`);
   }
 }
 
