@@ -4,7 +4,7 @@ import Notiflix from 'notiflix';
 document.getElementById('search-form').addEventListener('submit', async function(event) {
   event.preventDefault();
   const searchQuery = event.target.searchQuery.value.trim();
-  
+
   if (!searchQuery) {
     Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
     return;
@@ -29,10 +29,13 @@ export async function fetchImages(searchQuery, page = 1) {
     if (response.data.hits.length === 0) {
       Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
     } else {
-      return response.data.hits;
+      return {
+        images: response.data.hits,
+        totalHits: response.data.totalHits,
+      };
     }
   } catch (error) {
-    Notiflix.Notify.failure(`Sorry, there are no images matching your search query. Please try again.`);
+    console.error(error)
   }
 }
 

@@ -10,6 +10,7 @@ const loadMoreButton = document.querySelector('.load-more');
 loadMoreButton.style.display = 'none';
 let page = 1;
 
+
 function createImageCard(image) {
   return `
     <div class="photo-card">
@@ -39,7 +40,7 @@ async function handleFormSubmit(event) {
   
   page = 1;
   try {
-    const images = await fetchImages(searchField.value, page);
+    const {images, totalHits} = await fetchImages(searchField.value, page);
     gallery.innerHTML = '';
     images.map(image => {
       const card = createImageCard(image);
@@ -53,17 +54,13 @@ async function handleFormSubmit(event) {
         animationSpeed: 250,
         closeText: '×'
       });
-      // if (images.length * page < totalHits) {
-      //   loadMoreButton.style.display = 'block';
-      // } else {
-      //   loadMoreButton.style.display = 'none';
-      //   Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.");
-      // }
-      // if (images.length >= totalHits) {
-      //   // Сховати кнопку і вивести повідомлення
-      //   loadMoreButton.style.display = 'none';
-      //   Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.");
-      // }
+      if (images.length < totalHits) {
+        loadMoreButton.style.display = 'block';
+        Notiflix.Notify.success(`Hooray! We found ${totalHits} images`);
+      }
+        else if (images.length >= totalHits) {
+          loadMoreButton.style.display = 'none';
+          Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.");}
   } catch (error) {
     Notiflix.Notify.failure(`Sorry, there are no images matching your search query. Please try again.`);
   }
@@ -72,7 +69,7 @@ async function handleFormSubmit(event) {
 async function handleLoadMoreClick() {
   page++;
   try {
-    const images = await fetchImages(searchField.value, page);
+    const {images, totalHits} = await fetchImages(searchField.value, page);
     images.map(image => {
       const card = createImageCard(image);
       gallery.insertAdjacentHTML('beforeend', card);
@@ -83,17 +80,13 @@ async function handleLoadMoreClick() {
       behavior: "smooth",
     });
     SimpleLightbox.refresh();
-    // if (images.length * page < totalHits) {
-    //   Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
-    // } else {
-    //   loadMoreButton.style.display = 'none';
-    //   Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.");
-    // }
-    // if (images.length >= totalHits) {
-    //   // Сховати кнопку і вивести повідомлення
-    //   loadMoreButton.style.display = 'none';
-    //   Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.");
-    // }
+    if (images.length < totalHits) {
+      loadMoreButton.style.display = 'block';
+      Notiflix.Notify.success(`Hooray! We found ${totalHits} images`);
+    }
+      else if (images.length >= totalHits) {
+        loadMoreButton.style.display = 'none';
+        Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.");}
   } catch (error) {
     Notiflix.Notify.failure(`Sorry, there are no images matching your search query. Please try again.`);
   }
@@ -105,6 +98,11 @@ loadMoreButton.addEventListener('click', handleLoadMoreClick);
 
 
 // ...
+
+
+// if (images.length >= totalHits) {
+//   loadMoreButton.style.display = 'none';
+//   Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.");}
 // ${totalHits}
 // let page = 1;
 
