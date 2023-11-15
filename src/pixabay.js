@@ -6,7 +6,7 @@ document.getElementById('search-form').addEventListener('submit', async function
   const searchQuery = event.target.searchQuery.value.trim();
 
   if (!searchQuery) {
-    Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
+    Notiflix.Report.failure('Sorry, there are no images matching your search query. Please try again.');
     return;
   }
   await fetchImages(searchQuery);
@@ -35,7 +35,7 @@ export async function fetchImages(searchQuery, page = 1) {
       };
     }
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 }
 

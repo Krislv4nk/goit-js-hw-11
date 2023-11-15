@@ -56,13 +56,13 @@ async function handleFormSubmit(event) {
       });
       if (images.length < totalHits) {
         loadMoreButton.style.display = 'block';
-        Notiflix.Notify.success(`Hooray! We found ${totalHits} images`);
+        Notiflix.Report.success(`Hooray! We found ${totalHits} images`);
       }
         else if (images.length >= totalHits) {
           loadMoreButton.style.display = 'none';
-          Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");}
+          Notiflix.Report.info("We're sorry, but you've reached the end of search results.");}
   } catch (error) {
-    Notiflix.Notify.failure(`Sorry, there are no images matching your search query. Please try again.`);
+    console.error(error);
   }
 }
 
@@ -82,13 +82,13 @@ async function handleLoadMoreClick() {
     SimpleLightbox.refresh();
     if (images.length < totalHits) {
       loadMoreButton.style.display = 'block';
-      Notiflix.Notify.success(`Hooray! We found ${totalHits} images`);
+      Notiflix.Report.success(`Hooray! We found ${totalHits} images`);
     }
       else if (images.length >= totalHits) {
         loadMoreButton.style.display = 'none';
-        Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");}
+        Notiflix.Report.info("We're sorry, but you've reached the end of search results.");}
   } catch (error) {
-    Notiflix.Notify.failure(`Sorry, there are no images matching your search query. Please try again.`);
+    console.error(error);
   }
 }
 
