@@ -60,7 +60,7 @@ async function handleFormSubmit(event) {
       }
         else if (images.length >= totalHits) {
           loadMoreButton.style.display = 'none';
-          Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.");}
+          Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");}
   } catch (error) {
     Notiflix.Notify.failure(`Sorry, there are no images matching your search query. Please try again.`);
   }
@@ -86,7 +86,7 @@ async function handleLoadMoreClick() {
     }
       else if (images.length >= totalHits) {
         loadMoreButton.style.display = 'none';
-        Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.");}
+        Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");}
   } catch (error) {
     Notiflix.Notify.failure(`Sorry, there are no images matching your search query. Please try again.`);
   }
