@@ -2,10 +2,15 @@
 @import './example';
 
 
+body {
+  padding: 30px;
+}
+
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 16px;
+    margin: 20px;
   }
   
   .photo-card {
@@ -24,31 +29,36 @@
   .search-form input {
     flex: 1;
     padding: 10px;
-    border: 1px solid #00ff00; 
+    border: 1px solid #21a374; 
     border-radius: 5px;
   }
   
   
   .search-form button {
     padding: 10px;
-    background-color: #00ff00; 
+    background-color: #21a374; 
     color: #ffffff;
-    border: 1px solid #00ff00; 
+    border: 1px solid #21a374; 
     border-radius: 5px;
     cursor: pointer;
+    margin-left: 50px;
   }
-  
+  .search-form button:hover:focus{
+    background-color: #7ca321;
+  }
   
   .load-more {
     display: block;
     margin: 0 auto;
     padding: 10px;
-    background-color: #00ff00;
+    background-color: #21a374;
     color: #ffffff; 
-    border: 1px solid #00ff00; 
+    border: 1px solid #21a374; 
     border-radius: 5px;
     cursor: pointer;
   }
-  
+  .load-more:hover:focus{
+    background-color: #7ca321;
+  }
  
   
