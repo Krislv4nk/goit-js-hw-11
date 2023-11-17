@@ -63,8 +63,9 @@ async function handleFormSubmit(event) {
         Notiflix.Report.success(`Hooray! We found ${images.length} images`);
       }
     } else if (images === undefined) {
-      debugger; 
+      
       Notiflix.Report.failure("Sorry, there are no images matching your search query. Please try again.");
+      return;
     }
     lightbox = new SimpleLightbox('.photo-card a', {
       overlay: true,
@@ -99,8 +100,9 @@ async function handleLoadMoreClick() {
         lightbox.refresh();
       }
     } else if (images === undefined) {
-      debugger; 
+      
       Notiflix.Report.failure("Sorry, there are no images matching your search query. Please try again.");
+      return;
     }
   } catch (error) {
     console.error(error);
