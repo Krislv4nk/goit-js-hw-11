@@ -90,7 +90,7 @@ async function handleLoadMoreClick() {
         loadMoreButton.style.display = 'none';
         Notiflix.Report.info("We're sorry, but you've reached the end of search results.");
       } else {
-        Notiflix.Report.success(`Hooray! We found ${images.length} more images`);
+        Notiflix.Report.success(`Hooray! We found ${hits.length} more images`);
       }
       if (lightbox) {
         lightbox.refresh();
