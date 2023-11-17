@@ -97,7 +97,7 @@ async function handleLoadMoreClick() {
       if (lightbox) {
         lightbox.refresh();
       }
-    } else if (! typeOf images === undefined) {
+    } else if (typeOf images === undefined) {
       Notiflix.Report.failure("Sorry, there are no images matching your search query. Please try again.");
     }
   } catch (error) {
