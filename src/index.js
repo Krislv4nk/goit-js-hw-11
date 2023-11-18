@@ -38,11 +38,12 @@ function createImageCard(image) {
 async function handleFormSubmit(event) {
   event.preventDefault();
   const searchQuery = searchField.value.trim();
+  page = 1;
+  loadedImages = 0;
   if (!searchQuery || searchQuery.length === 0) {
-    Notiflix.Report.failure('Sorry, there are no images matching your search query. Please try again.');
+    Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
     return;
   } 
-  page = 1;
   try {
     const {hits, totalHits} = await fetchImages(searchField.value, page);
     gallery.innerHTML = '';
@@ -54,13 +55,13 @@ async function handleFormSubmit(event) {
       loadedImages += hits.length;
       if (loadedImages >= totalHits) {
         loadMoreButton.style.display = 'none'; 
-        Notiflix.Report.info("We're sorry, but you've reached the end of search results.");
+        Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
       } else {
         loadMoreButton.style.display = 'block';
-        Notiflix.Report.success(`Hooray! We found ${hits.length} images`);
+        Notiflix.Notify.success(`Hooray! We found ${hits.length} images`);
       }
     } else if (hits.length === 0) {
-      Notiflix.Report.failure("Sorry, there are no images matching your search query. Please try again.");
+      Notiflix.Notify.failure("Sorry, there are no images matching your search query. Please try again.");
       return;
     }
     lightbox = new SimpleLightbox('.photo-card a', {
@@ -88,9 +89,9 @@ async function handleLoadMoreClick() {
       loadedImages += hits.length;
       if (loadedImages >= totalHits) {
         loadMoreButton.style.display = 'none';
-        Notiflix.Report.info("We're sorry, but you've reached the end of search results.");
+        Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
       } else {
-        Notiflix.Report.success(`Hooray! We found ${hits.length} more images`);
+        Notiflix.Notify.success(`Hooray! We found ${hits.length} more images`);
       }
       if (lightbox) {
         lightbox.refresh();

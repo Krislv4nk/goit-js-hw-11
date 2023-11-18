@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Notiflix from 'notiflix';
+
 
 export async function fetchImages(searchQuery, page = 1) {
   
@@ -14,11 +14,7 @@ export async function fetchImages(searchQuery, page = 1) {
   };
 
   const url = 'https://pixabay.com/api/?' + new URLSearchParams(params).toString();
-  
-  try {
     const { data } = await axios.get(url); 
     return data;
-  } catch (error) {
-    console.error(error);
-  }
+  
 }
